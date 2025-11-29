@@ -1,0 +1,28 @@
+/* Table layout adjustments */
+.full-width-table {
+	width: 100%;
+}
+
+/* Align headers and cells consistently */
+.full-width-table .mat-column-id,
+.full-width-table .mat-header-cell.mat-column-id {
+	text-align: right;
+}
+
+.full-width-table .mat-column-employeeId,
+.full-width-table .mat-header-cell.mat-column-employeeId {
+	text-align: left;
+}
+
+.full-width-table .mat-column-checkInTime,
+.full-width-table .mat-header-cell.mat-column-checkInTime,
+.full-width-table .mat-column-checkOutTime,
+.full-width-table .mat-header-cell.mat-column-checkOutTime {
+	text-align: center;
+}
+
+.full-width-table .mat-column-duration,
+.full-width-table .mat-header-cell.mat-column-duration {
+	text-align: right;
+}
+

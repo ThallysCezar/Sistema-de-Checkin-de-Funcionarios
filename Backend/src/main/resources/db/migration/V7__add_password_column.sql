@@ -1,0 +1,8 @@
+---- Add password column to employee table for demo authentication
+--ALTER TABLE public.employee
+--ADD COLUMN IF NOT EXISTS password VARCHAR(200) DEFAULT 'password';
+--
+---- Set specific password values for seeded users for demo purposes
+--UPDATE public.employee SET password = 'admin' WHERE email = 'admin@example.com';
+--UPDATE public.employee SET password = 'manager' WHERE email = 'manager@example.com';
+--UPDATE public.employee SET password = 'password' WHERE email = 'employee@example.com';

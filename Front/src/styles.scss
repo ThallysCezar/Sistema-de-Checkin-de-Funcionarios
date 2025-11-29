@@ -1,0 +1,24 @@
+/*
+	Preferred: SCSS theming. Uncomment and use if your build supports it & @angular/material is installed.
+	@use '@angular/material' as mat;
+	@include mat.core();
+	$custom-app-primary: mat.define-palette(mat.$blue-palette);
+	$custom-app-accent: mat.define-palette(mat.$indigo-palette, A200, A400, 700);
+	$custom-app-warn: mat.define-palette(mat.$red-palette);
+	$custom-theme: mat.define-light-theme((
+		color: (
+			primary: $custom-app-primary,
+			accent: $custom-app-accent,
+			warn: $custom-app-warn,
+		)
+	));
+	@include mat.all-component-themes($custom-theme);
+
+	Fallback: If `@use '@angular/material/theming'` fails in your environment, use a prebuilt theme to ensure Material components look correct.
+*/
+
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

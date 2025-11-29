@@ -1,0 +1,76 @@
+<div style="padding: 20px">
+  <mat-card>
+    <div style="display: flex; justify-content: space-between">
+      <h1 style="margin-left: 10px;">Dashboard</h1>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Search</mat-label>
+        <input matInput placeholder="User name or email" />
+        <button mat-icon-button matSuffix>
+          <mat-icon matSuffix>search</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+
+    <!-- <button
+      mat-stroked-button
+      (click)="openColumnVisibilityModal()"
+    >
+      <mat-icon>settings</mat-icon>
+      Configurar colunas
+    </button> -->
+
+    <table mat-table [dataSource]="dataSource" class="full-width-table" style="width: 100%">
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>{{ columnMap['id'].label }}</th>
+        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="employeeId">
+        <th mat-header-cell *matHeaderCellDef>{{ columnMap['employeeId'].label }}</th>
+        <td mat-cell *matCellDef="let element">{{ element.employeeId }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="checkInTime">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ columnMap['checkInTime'].label }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.checkInTime | date:'HH:mm:ss' }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="checkOutTime">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ columnMap['checkOutTime'].label }}
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.checkOutTime | date:'HH:mm:ss' }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="duration">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ columnMap['duration'].label }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.duration }}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+    </table>
+    <mat-paginator
+      [length]="dataSource.data.length"
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      aria-label="Select page"
+    >
+    </mat-paginator>
+
+    <div style="margin-top: 20px; text-align: right;">
+      <button mat-raised-button color="primary" (click)="goToCheckin()">
+        Ir para Check-in
+      </button>
+    </div>
+  </mat-card>
+</div>

@@ -1,0 +1,6 @@
+---- Remove role and password columns from employee now that auth_credentials persists them separately
+--ALTER TABLE public.employee
+--DROP COLUMN IF EXISTS role;
+--
+--ALTER TABLE public.employee
+--DROP COLUMN IF EXISTS password;

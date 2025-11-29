@@ -1,0 +1,8 @@
+-- Add role column to employees
+--ALTER TABLE public.employee
+--ADD COLUMN IF NOT EXISTS role VARCHAR(50) DEFAULT 'employee';
+--
+---- Update default role for seeded users accordingly
+--UPDATE public.employee SET role = 'manager' WHERE email = 'manager@example.com';
+--UPDATE public.employee SET role = 'admin' WHERE email = 'admin@example.com';
+--UPDATE public.employee SET role = 'employee' WHERE role IS NULL;
