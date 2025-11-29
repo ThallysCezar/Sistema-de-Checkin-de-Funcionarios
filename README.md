@@ -562,6 +562,15 @@ http://localhost:8080
 
 ---
 
+## 📚 Documentação (Swagger)
+
+- **UI**: `http://localhost:8080/swagger-ui/index.html`
+- **OpenAPI JSON**: `http://localhost:8080/v3/api-docs`
+
+A documentação dos endpoints do backend está disponível via Swagger. A UI permite testar as requisições diretamente pelo navegador.
+
+---
+
 ## 💾 Banco de Dados
 
 ### Estrutura das Tabelas
@@ -618,6 +627,14 @@ work_records
 | `V4__scriptInsert_data.sql` | Insere funcionários de teste |
 | `V8__create_auth_credentials_table.sql` | Cria tabela de autenticação |
 | `V11__fix_serial_sequences.sql` | Corrige sequências do PostgreSQL |
+
+---
+
+## 🖼️ Fluxo da Aplicação
+
+O diagrama abaixo ilustra o fluxo principal entre login, check-in/check-out e o painel do manager, seja para parte do FrontEnd, quanto o BackEnd.
+
+![Fluxo da Aplicação](./Assets/imagens/Fluxograma%20-%20Desafio%201%20-%20Sistema%20de%20Check-in%20de%20Funcionários.jpg)
 
 ---
 
