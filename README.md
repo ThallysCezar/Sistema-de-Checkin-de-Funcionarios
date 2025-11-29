@@ -634,7 +634,7 @@ work_records
 
 O diagrama abaixo ilustra o fluxo principal entre login, check-in/check-out e o painel do manager, seja para parte do FrontEnd, quanto o BackEnd.
 
-![Fluxo da Aplicação](./Assets/imagens/Fluxograma%20-%20Desafio%201%20-%20Sistema%20de%20Check-in%20de%20Funcionários.jpg)
+![Fluxo da Aplicação](./Assets/imagens/Fluxograma%20-%20Desafio%201%20-%20Sistema%20de%20Check-in%20de%20Funcionários.jpeg)
 
 ---
 
