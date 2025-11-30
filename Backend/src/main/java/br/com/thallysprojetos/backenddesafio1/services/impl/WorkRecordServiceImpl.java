@@ -4,6 +4,7 @@ import br.com.thallysprojetos.backenddesafio1.dtos.WorkRecordDTO;
 import br.com.thallysprojetos.backenddesafio1.exceptions.workRecord.WorkRecordsAlreadyExistException;
 import br.com.thallysprojetos.backenddesafio1.exceptions.workRecord.WorkRecordsNotFoundException;
 import br.com.thallysprojetos.backenddesafio1.mappers.WorkRecordMappers;
+import br.com.thallysprojetos.backenddesafio1.messaging.WorkRecordEventPublisher;
 import br.com.thallysprojetos.backenddesafio1.models.WorkRecord;
 import br.com.thallysprojetos.backenddesafio1.repositories.WorkRecordRepository;
 import br.com.thallysprojetos.backenddesafio1.services.WorkRecordService;
@@ -27,6 +28,7 @@ public class WorkRecordServiceImpl implements WorkRecordService {
 
     private final WorkRecordRepository workRecordRepository;
     private final WorkRecordMappers mappers;
+    private final WorkRecordEventPublisher eventPublisher;
 
     public WorkRecordDTO checkIn(Long employeeId) {
         WorkRecord open = workRecordRepository.findByEmployeeIdAndCheckOutTimeIsNull(employeeId);
@@ -38,6 +40,9 @@ public class WorkRecordServiceImpl implements WorkRecordService {
         record.setEmployeeId(employeeId);
         record.setCheckInTime(LocalDateTime.now());
         record = workRecordRepository.save(record);
+
+        // Publica evento assíncrono de check-in
+        eventPublisher.publishCheckInEvent(employeeId, record.getId());
 
         return mappers.toDTO(record);
     }
@@ -59,6 +64,9 @@ public class WorkRecordServiceImpl implements WorkRecordService {
         String formatted = String.format("%02d:%02d:%02d", hours, minutes, secs);
         open.setDuration(formatted);
         workRecordRepository.save(open);
+
+        // Publica evento assíncrono de check-out
+        eventPublisher.publishCheckOutEvent(employeeId, open.getId(), formatted);
 
         return mappers.toDTO(open);
     }
