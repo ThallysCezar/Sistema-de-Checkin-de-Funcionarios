@@ -14,6 +14,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { Admin } from './admin/admin';
 import { AdminsRoutingModule } from './admins-routing-module';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { AdminsRoutingModule } from './admins-routing-module';
     MatInputModule,
     MatDialogModule,
     MatListModule,
+    MatToolbarModule,
   ]
 })
 export class AdminsModule { }

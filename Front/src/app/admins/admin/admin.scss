@@ -1,28 +1,225 @@
-/* Table layout adjustments */
-.full-width-table {
-	width: 100%;
+// Grupo Moura Theme - Admin Component Styles
+
+.admin-wrapper {
+  min-height: 100vh;
+  background: var(--moura-gray-light);
 }
 
-/* Align headers and cells consistently */
-.full-width-table .mat-column-id,
-.full-width-table .mat-header-cell.mat-column-id {
-	text-align: right;
+.moura-toolbar {
+  background: linear-gradient(135deg, var(--moura-blue-dark) 0%, var(--moura-blue-medium) 100%) !important;
+  color: white !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  padding: 0 24px;
+
+  .toolbar-logo {
+    height: 45px;
+    width: auto;
+    margin-right: 16px;
+    object-fit: contain;
+    background: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+  }
+
+  .toolbar-title {
+    font-size: 1.25rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+
+  .spacer {
+    flex: 1 1 auto;
+  }
 }
 
-.full-width-table .mat-column-employeeId,
-.full-width-table .mat-header-cell.mat-column-employeeId {
-	text-align: left;
+.admin-container {
+  padding: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
 }
 
-.full-width-table .mat-column-checkInTime,
-.full-width-table .mat-header-cell.mat-column-checkInTime,
-.full-width-table .mat-column-checkOutTime,
-.full-width-table .mat-header-cell.mat-column-checkOutTime {
-	text-align: center;
+.dashboard-card {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+
+  .dashboard-header {
+    background: linear-gradient(135deg, var(--moura-blue-light) 0%, rgba(30, 136, 229, 0.1) 100%);
+    padding: 24px;
+    border-bottom: 3px solid var(--moura-blue-medium);
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+
+      .title-section {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        .dashboard-icon {
+          font-size: 32px;
+          width: 32px;
+          height: 32px;
+          color: var(--moura-blue-dark);
+        }
+
+        h1 {
+          margin: 0;
+          color: var(--moura-blue-dark);
+          font-size: 1.75rem;
+          font-weight: 600;
+        }
+      }
+
+      .actions-section {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+
+        .search-field {
+          min-width: 300px;
+          
+          ::ng-deep {
+            .mat-mdc-text-field-wrapper {
+              background-color: white;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
-.full-width-table .mat-column-duration,
-.full-width-table .mat-header-cell.mat-column-duration {
-	text-align: right;
+.table-container {
+  overflow-x: auto;
+  margin-top: 16px;
 }
+
+.moura-table {
+  width: 100%;
+  background: white;
+
+  .moura-header-row {
+    background: linear-gradient(135deg, var(--moura-blue-dark) 0%, var(--moura-blue-medium) 100%);
+    
+    th {
+      color: white !important;
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      padding: 16px 12px;
+    }
+  }
+
+  .moura-data-row {
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: var(--moura-blue-light);
+    }
+
+    td {
+      padding: 14px 12px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    &:nth-child(even) {
+      background-color: #fafafa;
+
+      &:hover {
+        background-color: var(--moura-blue-light);
+      }
+    }
+  }
+
+  // Column alignments
+  .mat-column-id,
+  .mat-header-cell.mat-column-id {
+    text-align: right;
+  }
+
+  .mat-column-employeeId,
+  .mat-header-cell.mat-column-employeeId {
+    text-align: left;
+  }
+
+  .mat-column-checkInTime,
+  .mat-header-cell.mat-column-checkInTime,
+  .mat-column-checkOutTime,
+  .mat-header-cell.mat-column-checkOutTime {
+    text-align: center;
+  }
+
+  .mat-column-duration,
+  .mat-header-cell.mat-column-duration {
+    text-align: right;
+  }
+}
+
+.moura-paginator {
+  background: #f5f5f5;
+  border-top: 2px solid var(--moura-blue-medium);
+  padding: 8px 16px;
+}
+
+// Floating Action Button for Check-in
+.checkin-fab {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 1000;
+  box-shadow: 0 6px 20px rgba(13, 78, 150, 0.4);
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 0 28px;
+  height: 56px;
+
+  mat-icon {
+    margin-right: 8px;
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+  }
+
+  &:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 8px 28px rgba(13, 78, 150, 0.5);
+  }
+
+  &:active {
+    transform: translateY(-2px) scale(1.02);
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .admin-container {
+    padding: 16px;
+  }
+
+  .dashboard-header .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+
+    .actions-section .search-field {
+      min-width: 100%;
+    }
+  }
+
+  .checkin-fab {
+    bottom: 20px;
+    right: 20px;
+    padding: 0 20px;
+    height: 48px;
+    font-size: 0.9rem;
+  }
+}
+
 

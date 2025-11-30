@@ -1,28 +1,64 @@
-<div class="container">
-  <h2>Point Record</h2>
+<div class="checkin-wrapper">
+  <div class="checkin-container">
+    <div class="checkin-card">
+      <div class="card-header">
+        <mat-icon class="header-icon">schedule</mat-icon>
+        <h1>Registro de Ponto</h1>
+        <p class="subtitle">Marque sua entrada e saída</p>
+      </div>
 
-  <div class="buttons">
-    <button mat-raised-button color="primary" (click)="onCheckIn()" [disabled]="isLoading">Check-in</button>
-    <button mat-raised-button color="accent" (click)="onCheckOut()" [disabled]="isLoading">Check-out</button>
-  </div>
+      <div class="card-content">
+        <div class="action-buttons">
+          <button 
+            mat-raised-button 
+            color="primary" 
+            class="checkin-button"
+            (click)="onCheckIn()" 
+            [disabled]="isLoading"
+          >
+            <mat-icon>login</mat-icon>
+            <span>Check-in</span>
+          </button>
+          
+          <button 
+            mat-raised-button 
+            color="accent" 
+            class="checkout-button"
+            (click)="onCheckOut()" 
+            [disabled]="isLoading"
+          >
+            <mat-icon>logout</mat-icon>
+            <span>Check-out</span>
+          </button>
+        </div>
 
-  <div *ngIf="isManager" class="dashboard-button">
-    <button mat-raised-button color="warn" (click)="goToDashboard()">
-      📊 Ir para Dashboard
-    </button>
-  </div>
+        <mat-spinner *ngIf="isLoading" diameter="40" class="loading-spinner"></mat-spinner>
 
-  <div *ngIf="successMessage" class="success" style="color: green; margin-top: 10px;">
-    <p><strong>✓</strong> {{ successMessage }}</p>
-  </div>
+        <div *ngIf="successMessage" class="message success-message">
+          <mat-icon>check_circle</mat-icon>
+          <p>{{ successMessage }}</p>
+        </div>
 
-  <div *ngIf="errorMessage" class="error" style="color: red; margin-top: 10px;">
-    <p><strong>✗</strong> {{ errorMessage }}</p>
-  </div>
+        <div *ngIf="errorMessage" class="message error-message">
+          <mat-icon>error</mat-icon>
+          <p>{{ errorMessage }}</p>
+        </div>
 
-  <div class="result" *ngIf="totalHoras !== null">
-    <p>
-      Total hours worked: <strong>{{ totalHoras }}</strong>
-    </p>
+        <div class="work-hours" *ngIf="totalHoras !== null">
+          <mat-icon class="hours-icon">access_time</mat-icon>
+          <div class="hours-content">
+            <span class="hours-label">Total de horas trabalhadas</span>
+            <span class="hours-value">{{ totalHoras }}</span>
+          </div>
+        </div>
+
+        <div *ngIf="isManager" class="dashboard-section">
+          <button mat-stroked-button class="dashboard-link" (click)="goToDashboard()">
+            <mat-icon>dashboard</mat-icon>
+            <span>Acessar Dashboard</span>
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

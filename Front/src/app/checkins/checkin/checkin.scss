@@ -1,59 +1,295 @@
-.container {
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-height: 100vh;
-background: #fafafa;
-font-family: Roboto, sans-serif;
-text-align: center;
+// Grupo Moura Theme - Check-in Component Styles
+
+.checkin-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--moura-blue-dark) 0%, var(--moura-blue-medium) 50%, var(--moura-cyan) 100%);
+  padding: 20px;
+  font-family: Roboto, sans-serif;
 }
 
-
-h2 {
-margin-bottom: 24px;
-font-size: 24px;
+.checkin-container {
+  width: 100%;
+  max-width: 550px;
 }
 
+.checkin-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  animation: slideUp 0.4s ease-out;
 
-.buttons {
-display: flex;
-gap: 16px;
-margin-bottom: 20px;
+  .card-header {
+    background: linear-gradient(135deg, var(--moura-blue-dark) 0%, var(--moura-blue-medium) 100%);
+    color: white;
+    padding: 32px 24px;
+    text-align: center;
+    position: relative;
+
+    .header-icon {
+      font-size: 48px;
+      width: 48px;
+      height: 48px;
+      margin-bottom: 12px;
+      opacity: 0.9;
+    }
+
+    h1 {
+      margin: 0 0 8px 0;
+      font-size: 2rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .subtitle {
+      margin: 0;
+      font-size: 0.95rem;
+      opacity: 0.9;
+      font-weight: 400;
+    }
+  }
+
+  .card-content {
+    padding: 40px 32px;
+  }
 }
 
-
-.result p {
-font-size: 18px;
-}
-
-.result strong.placeholder {
-	color: rgba(0, 0, 0, 0.6);
-	font-weight: 400;
-}
-
-.success {
-  padding: 12px;
-  border-radius: 4px;
-  background-color: #d4edda;
-  border: 1px solid #c3e6cb;
-  color: #155724;
-  margin-bottom: 16px;
-}
-
-.error {
-  padding: 12px;
-  border-radius: 4px;
-  background-color: #f8d7da;
-  border: 1px solid #f5c6cb;
-  color: #721c24;
-  margin-bottom: 16px;
-}
-
-.dashboard-button {
-  margin-top: 20px;
+.action-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 32px;
 
   button {
-    padding: 0 24px;
+    flex: 1;
+    max-width: 200px;
+    height: 56px;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    mat-icon {
+      font-size: 22px;
+      width: 22px;
+      height: 22px;
+    }
+
+    &:hover:not([disabled]) {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  .checkin-button {
+    box-shadow: 0 4px 12px rgba(13, 78, 150, 0.3);
+  }
+
+  .checkout-button {
+    box-shadow: 0 4px 12px rgba(0, 188, 212, 0.3);
+  }
+}
+
+.loading-spinner {
+  margin: 20px auto;
+  display: block;
+}
+
+.message {
+  padding: 16px 20px;
+  border-radius: 12px;
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  animation: fadeIn 0.3s ease-out;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  mat-icon {
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 500;
+    flex: 1;
+  }
+}
+
+.success-message {
+  background-color: #d4edda;
+  border: 2px solid #28a745;
+  color: #155724;
+
+  mat-icon {
+    color: #28a745;
+  }
+}
+
+.error-message {
+  background-color: #f8d7da;
+  border: 2px solid #dc3545;
+  color: #721c24;
+
+  mat-icon {
+    color: #dc3545;
+  }
+}
+
+.work-hours {
+  background: linear-gradient(135deg, var(--moura-blue-light) 0%, rgba(30, 136, 229, 0.1) 100%);
+  border: 2px solid var(--moura-blue-medium);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 24px 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  animation: fadeIn 0.3s ease-out;
+
+  .hours-icon {
+    font-size: 40px;
+    width: 40px;
+    height: 40px;
+    color: var(--moura-blue-dark);
+  }
+
+  .hours-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    .hours-label {
+      font-size: 0.85rem;
+      color: var(--moura-blue-dark);
+      font-weight: 500;
+      opacity: 0.8;
+    }
+
+    .hours-value {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--moura-blue-dark);
+      letter-spacing: 0.5px;
+    }
+  }
+}
+
+.dashboard-section {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 2px solid #e0e0e0;
+  text-align: center;
+
+  .dashboard-link {
+    width: 100%;
+    max-width: 280px;
+    height: 48px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border: 2px solid var(--moura-blue-medium);
+    color: var(--moura-blue-dark);
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 8px;
+
+    mat-icon {
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+    }
+
+    &:hover {
+      background-color: var(--moura-blue-medium);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(13, 78, 150, 0.3);
+    }
+  }
+}
+
+// Animations
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// Responsive design
+@media (max-width: 600px) {
+  .checkin-wrapper {
+    padding: 16px;
+  }
+
+  .checkin-card {
+    .card-header {
+      padding: 24px 20px;
+
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      .header-icon {
+        font-size: 40px;
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    .card-content {
+      padding: 28px 20px;
+    }
+  }
+
+  .action-buttons {
+    flex-direction: column;
+    gap: 16px;
+
+    button {
+      max-width: 100%;
+    }
+  }
+
+  .work-hours {
+    padding: 16px;
+
+    .hours-content .hours-value {
+      font-size: 1.5rem;
+    }
   }
 }

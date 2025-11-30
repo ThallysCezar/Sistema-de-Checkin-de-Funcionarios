@@ -1,26 +1,33 @@
-<div style="padding: 20px">
-  <mat-card>
-    <div style="display: flex; justify-content: space-between">
-      <h1 style="margin-left: 10px;">Dashboard</h1>
+<div class="admin-wrapper">
+  <mat-toolbar class="moura-toolbar">
+    <img src="https://cdn.folhape.com.br/upload/dn_arquivo/2022/03/image-2022-03-21t100425917.jpg" alt="Logo Grupo Moura" class="toolbar-logo">
+    <span class="toolbar-title">Sistema de Check-in de Funcionários</span>
+    <span class="spacer"></span>
+  </mat-toolbar>
 
-      <mat-form-field appearance="outline">
-        <mat-label>Search</mat-label>
-        <input matInput placeholder="User name or email" />
-        <button mat-icon-button matSuffix>
-          <mat-icon matSuffix>search</mat-icon>
-        </button>
-      </mat-form-field>
-    </div>
+  <div class="admin-container">
+    <mat-card class="dashboard-card">
+      <mat-card-header class="dashboard-header">
+        <div class="header-content">
+          <div class="title-section">
+            <mat-icon class="dashboard-icon">dashboard</mat-icon>
+            <h1>Registros de Trabalho</h1>
+          </div>
 
-    <!-- <button
-      mat-stroked-button
-      (click)="openColumnVisibilityModal()"
-    >
-      <mat-icon>settings</mat-icon>
-      Configurar colunas
-    </button> -->
+          <div class="actions-section">
+            <mat-form-field appearance="outline" class="search-field">
+              <mat-label>Buscar</mat-label>
+              <input matInput placeholder="Nome ou email do funcionário" />
+              <mat-icon matSuffix>search</mat-icon>
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-card-header>
 
-    <table mat-table [dataSource]="dataSource" class="full-width-table" style="width: 100%">
+      <mat-card-content>
+
+        <div class="table-container">
+          <table mat-table [dataSource]="dataSource" class="moura-table">
 
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef>{{ columnMap['id'].label }}</th>
@@ -55,22 +62,26 @@
         </td>
       </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns" class="moura-header-row"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns" class="moura-data-row"></tr>
+          </table>
+        </div>
 
-    </table>
-    <mat-paginator
-      [length]="dataSource.data.length"
-      [pageSize]="10"
-      [pageSizeOptions]="[5, 10, 25, 100]"
-      aria-label="Select page"
-    >
-    </mat-paginator>
+        <mat-paginator
+          [length]="dataSource.data.length"
+          [pageSize]="10"
+          [pageSizeOptions]="[5, 10, 25, 100]"
+          aria-label="Selecionar página"
+          class="moura-paginator"
+        >
+        </mat-paginator>
+      </mat-card-content>
+    </mat-card>
 
-    <div style="margin-top: 20px; text-align: right;">
-      <button mat-raised-button color="primary" (click)="goToCheckin()">
-        Ir para Check-in
-      </button>
-    </div>
-  </mat-card>
+    <!-- Floating Action Button for Check-in -->
+    <button mat-fab extended color="primary" class="checkin-fab" (click)="goToCheckin()">
+      <mat-icon>schedule</mat-icon>
+      Fazer Check-in
+    </button>
+  </div>
 </div>
