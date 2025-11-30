@@ -11,7 +11,8 @@ BEGIN
         IF max_id IS NULL THEN
             max_id := 0;
         END IF;
-        EXECUTE format('SELECT setval(%L, %s)', seq_name, max_id);
+        -- setval requires value >= 1, so use GREATEST(max_id, 1)
+        EXECUTE format('SELECT setval(%L, GREATEST(%s, 1))', seq_name, max_id);
     END IF;
 
     -- Employee table
@@ -21,7 +22,8 @@ BEGIN
         IF max_id IS NULL THEN
             max_id := 0;
         END IF;
-        EXECUTE format('SELECT setval(%L, %s)', seq_name, max_id);
+        -- setval requires value >= 1, so use GREATEST(max_id, 1)
+        EXECUTE format('SELECT setval(%L, GREATEST(%s, 1))', seq_name, max_id);
     END IF;
 
     -- Auth credentials (if has id serial)
@@ -31,6 +33,7 @@ BEGIN
         IF max_id IS NULL THEN
             max_id := 0;
         END IF;
-        EXECUTE format('SELECT setval(%L, %s)', seq_name, max_id);
+        -- setval requires value >= 1, so use GREATEST(max_id, 1)
+        EXECUTE format('SELECT setval(%L, GREATEST(%s, 1))', seq_name, max_id);
     END IF;
 END $$;
