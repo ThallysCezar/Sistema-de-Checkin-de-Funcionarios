@@ -1,5 +1,3 @@
-// Grupo Moura Theme - Admin Component Styles
-
 .admin-wrapper {
   min-height: 100vh;
   background: var(--moura-gray-light);
@@ -137,14 +135,13 @@
     }
   }
 
-  // Column alignments
   .mat-column-id,
   .mat-header-cell.mat-column-id {
     text-align: right;
   }
 
-  .mat-column-employeeId,
-  .mat-header-cell.mat-column-employeeId {
+  .mat-column-employeeName,
+  .mat-header-cell.mat-column-employeeName {
     text-align: left;
   }
 
@@ -167,7 +164,6 @@
   padding: 8px 16px;
 }
 
-// Floating Action Button for Check-in
 .checkin-fab {
   position: fixed;
   bottom: 32px;
@@ -198,7 +194,6 @@
   }
 }
 
-// Responsive design
 @media (max-width: 768px) {
   .admin-container {
     padding: 16px;

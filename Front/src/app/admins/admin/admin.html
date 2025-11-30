@@ -1,7 +1,7 @@
 <div class="admin-wrapper">
   <mat-toolbar class="moura-toolbar">
-    <img src="https://cdn.folhape.com.br/upload/dn_arquivo/2022/03/image-2022-03-21t100425917.jpg" alt="Logo Grupo Moura" class="toolbar-logo">
-    <span class="toolbar-title">Sistema de Check-in de Funcionários</span>
+    <img src="https://cdn.folhape.com.br/upload/dn_arquivo/2022/03/image-2022-03-21t100425917.jpg" alt="Grupo Moura Logo" class="toolbar-logo">
+    <span class="toolbar-title">Employee Check-in System</span>
     <span class="spacer"></span>
   </mat-toolbar>
 
@@ -11,13 +11,13 @@
         <div class="header-content">
           <div class="title-section">
             <mat-icon class="dashboard-icon">dashboard</mat-icon>
-            <h1>Registros de Trabalho</h1>
+            <h1>Work Records</h1>
           </div>
 
           <div class="actions-section">
             <mat-form-field appearance="outline" class="search-field">
-              <mat-label>Buscar</mat-label>
-              <input matInput placeholder="Nome ou email do funcionário" />
+              <mat-label>Search</mat-label>
+              <input matInput placeholder="Employee name or email" />
               <mat-icon matSuffix>search</mat-icon>
             </mat-form-field>
           </div>
@@ -34,9 +34,9 @@
         <td mat-cell *matCellDef="let element">{{ element.id }}</td>
       </ng-container>
 
-      <ng-container matColumnDef="employeeId">
-        <th mat-header-cell *matHeaderCellDef>{{ columnMap['employeeId'].label }}</th>
-        <td mat-cell *matCellDef="let element">{{ element.employeeId }}</td>
+      <ng-container matColumnDef="employeeName">
+        <th mat-header-cell *matHeaderCellDef>{{ columnMap['employeeName'].label }}</th>
+        <td mat-cell *matCellDef="let element">{{ element.employeeName }}</td>
       </ng-container>
 
       <ng-container matColumnDef="checkInTime">
@@ -71,17 +71,16 @@
           [length]="dataSource.data.length"
           [pageSize]="10"
           [pageSizeOptions]="[5, 10, 25, 100]"
-          aria-label="Selecionar página"
+          aria-label="Select page"
           class="moura-paginator"
         >
         </mat-paginator>
       </mat-card-content>
     </mat-card>
 
-    <!-- Floating Action Button for Check-in -->
     <button mat-fab extended color="primary" class="checkin-fab" (click)="goToCheckin()">
       <mat-icon>schedule</mat-icon>
-      Fazer Check-in
+      Make Check-in
     </button>
   </div>
 </div>

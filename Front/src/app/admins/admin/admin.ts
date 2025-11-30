@@ -21,23 +21,23 @@ export class Admin implements OnInit, AfterViewInit {
   readonly columnMap = Object.freeze({
     id: {
       label: 'ID',
-      description: 'ID',
+      description: 'Record ID',
     },
-    employeeId: {
-      label: 'Employee ID',
-      description: 'Employee ID',
+    employeeName: {
+      label: 'Employee Name',
+      description: 'Employee Name',
     },
     checkInTime: {
       label: 'Check-in Time',
       description: 'Check-in Time',
     },
-     checkOutTime: {
+    checkOutTime: {
       label: 'Check-out Time',
       description: 'Check-out Time',
     },
     duration: {
       label: 'Duration',
-      description: 'Duration',
+      description: 'Total Duration',
     },
   });
 

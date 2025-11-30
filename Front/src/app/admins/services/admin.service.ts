@@ -17,16 +17,11 @@ export class AdminService {
       map(items => items.map(i => ({
         id: i.id,
         employeeId: i.employeeId,
-        // Convert ISO strings to Date objects where it's present
+        employeeName: i.employeeName,
         checkInTime: i.checkInTime ? new Date(i.checkInTime) : null,
         checkOutTime: i.checkOutTime ? new Date(i.checkOutTime) : null,
         duration: i.duration,
       }) as AdminRecord))
     );
-
-    // return [
-    //   { id: 1, employeeId: 'E001', checkinTime: '09:00', checkoutTime: '18:00', duration: '9:00' },
-    //   { id: 2, employeeId: 'E002', checkinTime: '08:30', checkoutTime: '17:30', duration: '9:00' },
-    // ];
   }
 }

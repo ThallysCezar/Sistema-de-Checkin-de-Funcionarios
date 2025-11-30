@@ -1,6 +1,7 @@
 package br.com.thallysprojetos.backenddesafio1.services.impl;
 
 import br.com.thallysprojetos.backenddesafio1.dtos.WorkRecordDTO;
+import br.com.thallysprojetos.backenddesafio1.dtos.WorkRecordResponseDTO;
 import br.com.thallysprojetos.backenddesafio1.exceptions.workRecord.WorkRecordsAlreadyExistException;
 import br.com.thallysprojetos.backenddesafio1.exceptions.workRecord.WorkRecordsNotFoundException;
 import br.com.thallysprojetos.backenddesafio1.mappers.WorkRecordMappers;
@@ -79,13 +80,13 @@ public class WorkRecordServiceImpl implements WorkRecordService {
         return new PageImpl<>(dtos, pageable, records.getTotalElements());
     }
 
-    public List<WorkRecordDTO> findAll() {
-        List<WorkRecord> workeRecords = workRecordRepository.findAll();
-        if (workeRecords.isEmpty()) {
-            throw new WorkRecordsNotFoundException("No workdRecords found.");
+    public List<WorkRecordResponseDTO> findAll() {
+        List<WorkRecordResponseDTO> workRecords = workRecordRepository.findAllWorkRecordsWithEmployeeNames();
+        if (workRecords.isEmpty()) {
+            throw new WorkRecordsNotFoundException("No work records found.");
         }
 
-        return mappers.toListDTO(workeRecords);
+        return workRecords;
     }
 
 }

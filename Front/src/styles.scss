@@ -2,16 +2,15 @@
 
 @include mat.core();
 
-// Paleta de cores Grupo Moura
 $moura-blue-palette: (
   50: #e3f2fd,
   100: #bbdefb,
   200: #90caf9,
   300: #64b5f6,
   400: #42a5f5,
-  500: #0d4e96,  // Azul principal médio
+  500: #0d4e96,
   600: #1e88e5,
-  700: #0a3d75,  // Azul escuro
+  700: #0a3d75,
   800: #082f5c,
   900: #051e3a,
   A100: #82b1ff,
@@ -42,7 +41,7 @@ $moura-cyan-palette: (
   200: #80deea,
   300: #4dd0e1,
   400: #26c6da,
-  500: #00bcd4,  // Ciano médio
+  500: #00bcd4,
   600: #00acc1,
   700: #0097a7,
   800: #00838f,
@@ -69,12 +68,10 @@ $moura-cyan-palette: (
   )
 );
 
-// Definir as paletas do tema (usando m2 para Material 2 compatibility)
 $custom-app-primary: mat.m2-define-palette($moura-blue-palette, 500, 700, 900);
 $custom-app-accent: mat.m2-define-palette($moura-cyan-palette, 500, 400, 700);
 $custom-app-warn: mat.m2-define-palette(mat.$m2-red-palette);
 
-// Criar o tema
 $custom-theme: mat.m2-define-light-theme((
   color: (
     primary: $custom-app-primary,
@@ -87,7 +84,6 @@ $custom-theme: mat.m2-define-light-theme((
 
 @include mat.all-component-themes($custom-theme);
 
-// Variáveis CSS globais para as cores Grupo Moura
 :root {
   --moura-blue-dark: #0a3d75;
   --moura-blue-medium: #0d4e96;

@@ -2,6 +2,7 @@ package br.com.thallysprojetos.backenddesafio1.controllers;
 
 import br.com.thallysprojetos.backenddesafio1.dtos.ErrorResponseDTO;
 import br.com.thallysprojetos.backenddesafio1.dtos.WorkRecordDTO;
+import br.com.thallysprojetos.backenddesafio1.dtos.WorkRecordResponseDTO;
 import br.com.thallysprojetos.backenddesafio1.exceptions.workRecord.WorkRecordsAlreadyExistException;
 import br.com.thallysprojetos.backenddesafio1.exceptions.workRecord.WorkRecordsNotFoundException;
 import br.com.thallysprojetos.backenddesafio1.services.WorkRecordService;
@@ -54,7 +55,7 @@ public class WorkController {
 
     @Operation(summary = "List all Work Records")
     @GetMapping
-    public ResponseEntity<List<WorkRecordDTO>> listAll() {
+    public ResponseEntity<List<WorkRecordResponseDTO>> listAll() {
         return ResponseEntity.ok(service.findAll());
     }
 

@@ -3,8 +3,8 @@
     <div class="checkin-card">
       <div class="card-header">
         <mat-icon class="header-icon">schedule</mat-icon>
-        <h1>Registro de Ponto</h1>
-        <p class="subtitle">Marque sua entrada e saída</p>
+        <h1>Time Clock</h1>
+        <p class="subtitle">Mark your check-in and check-out</p>
       </div>
 
       <div class="card-content">
@@ -47,7 +47,7 @@
         <div class="work-hours" *ngIf="totalHoras !== null">
           <mat-icon class="hours-icon">access_time</mat-icon>
           <div class="hours-content">
-            <span class="hours-label">Total de horas trabalhadas</span>
+            <span class="hours-label">Total Hours Worked</span>
             <span class="hours-value">{{ totalHoras }}</span>
           </div>
         </div>
@@ -55,7 +55,7 @@
         <div *ngIf="isManager" class="dashboard-section">
           <button mat-stroked-button class="dashboard-link" (click)="goToDashboard()">
             <mat-icon>dashboard</mat-icon>
-            <span>Acessar Dashboard</span>
+            <span>Access Dashboard</span>
           </button>
         </div>
       </div>

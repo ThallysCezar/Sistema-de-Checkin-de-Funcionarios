@@ -1,5 +1,3 @@
-// Grupo Moura Theme - Check-in Component Styles
-
 .checkin-wrapper {
   min-height: 100vh;
   display: flex;
@@ -229,7 +227,6 @@
   }
 }
 
-// Animations
 @keyframes slideUp {
   from {
     opacity: 0;
@@ -250,7 +247,6 @@
   }
 }
 
-// Responsive design
 @media (max-width: 600px) {
   .checkin-wrapper {
     padding: 16px;
