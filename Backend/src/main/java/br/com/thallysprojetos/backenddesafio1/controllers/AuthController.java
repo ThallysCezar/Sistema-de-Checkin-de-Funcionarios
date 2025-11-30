@@ -4,6 +4,8 @@ import br.com.thallysprojetos.backenddesafio1.dtos.EmployeeDTO;
 import br.com.thallysprojetos.backenddesafio1.dtos.LoginResponseDTO;
 import br.com.thallysprojetos.backenddesafio1.dtos.LoginDTO;
 import br.com.thallysprojetos.backenddesafio1.services.AuthService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,23 +19,25 @@ import java.util.List;
 @RestController
 @RequestMapping
 @AllArgsConstructor
+@Tag(name = "Auth", description = "API for Employee Login")
 public class AuthController {
 
     private final AuthService service;
 
+    @Operation(summary = "Employee Login")
     @PostMapping("/auth/login")
     public ResponseEntity<LoginResponseDTO> login(@RequestBody LoginDTO login) {
         LoginResponseDTO dto = service.login(login);
         return ResponseEntity.ok(dto);
     }
 
-    // removed /auth/credentials endpoint (dev-only) as requested
-
+    @Operation(summary = "List all employeees")
     @GetMapping("/employees")
     public ResponseEntity<List<EmployeeDTO>> listAll() {
         return ResponseEntity.ok().body(service.findAll());
     }
 
+    @Operation(summary = "Create employee")
     @PostMapping("/employees")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<EmployeeDTO> createEmployee(@Valid @RequestBody EmployeeDTO dto) {

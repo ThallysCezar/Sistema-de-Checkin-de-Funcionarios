@@ -1,11 +1,12 @@
 package br.com.thallysprojetos.backenddesafio1.controllers;
 
-import br.com.thallysprojetos.backenddesafio1.dtos.EmployeeDTO;
 import br.com.thallysprojetos.backenddesafio1.dtos.ErrorResponseDTO;
 import br.com.thallysprojetos.backenddesafio1.dtos.WorkRecordDTO;
-import br.com.thallysprojetos.backenddesafio1.exceptions.workRecord.ModelAlreadyExistException;
-import br.com.thallysprojetos.backenddesafio1.exceptions.workRecord.ModelNotFoundException;
+import br.com.thallysprojetos.backenddesafio1.exceptions.workRecord.WorkRecordsAlreadyExistException;
+import br.com.thallysprojetos.backenddesafio1.exceptions.workRecord.WorkRecordsNotFoundException;
 import br.com.thallysprojetos.backenddesafio1.services.WorkRecordService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -20,32 +21,26 @@ import java.util.List;
 @RestController
 @RequestMapping("/work")
 @AllArgsConstructor
+@Tag(name = "Work", description = "API for Work Record management")
 public class WorkController {
 
     private final WorkRecordService service;
 
+    @Operation(summary = "Checkin Employeee")
     @PostMapping("/checkin")
-    public ResponseEntity<?> checkIn(@RequestBody WorkRecordDTO dto) {
-        try {
-            WorkRecordDTO saved = service.checkIn(dto.getEmployeeId());
-            return ResponseEntity.status(HttpStatus.CREATED).body(saved);
-        } catch (ModelAlreadyExistException ex) {
-            ErrorResponseDTO error = new ErrorResponseDTO(ex.getReason());
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(error);
-        }
+    public ResponseEntity<WorkRecordDTO> checkIn(@RequestBody WorkRecordDTO dto) {
+        WorkRecordDTO saved = service.checkIn(dto.getEmployeeId());
+        return ResponseEntity.status(HttpStatus.CREATED).body(saved);
     }
 
+    @Operation(summary = "Checkout Employeee")
     @PostMapping("/checkout")
-    public ResponseEntity<?> checkOut(@RequestBody WorkRecordDTO dto) {
-        try {
-            WorkRecordDTO updated = service.checkOut(dto.getEmployeeId());
-            return ResponseEntity.ok(updated);
-        } catch (ModelNotFoundException ex) {
-            ErrorResponseDTO error = new ErrorResponseDTO(ex.getReason());
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
-        }
+    public ResponseEntity<WorkRecordDTO> checkOut(@RequestBody WorkRecordDTO dto) {
+        WorkRecordDTO updated = service.checkOut(dto.getEmployeeId());
+        return ResponseEntity.ok(updated);
     }
 
+    @Operation(summary = "List all Work Records with pagination")
     @GetMapping("/list")
     public ResponseEntity<Page<WorkRecordDTO>> list(
             @RequestParam(required = false) Integer page,
@@ -57,9 +52,10 @@ public class WorkController {
         return ResponseEntity.ok(result);
     }
 
+    @Operation(summary = "List all Work Records")
     @GetMapping
     public ResponseEntity<List<WorkRecordDTO>> listAll() {
-        return ResponseEntity.ok().body(service.findAll());
+        return ResponseEntity.ok(service.findAll());
     }
 
 }

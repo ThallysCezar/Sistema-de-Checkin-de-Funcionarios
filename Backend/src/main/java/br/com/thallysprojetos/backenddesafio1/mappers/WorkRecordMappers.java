@@ -17,13 +17,10 @@ public class WorkRecordMappers {
 
     public WorkRecordDTO toDTO(WorkRecord entity) {
         return modelMapper.map(entity, WorkRecordDTO.class);
-//        dto.setDuration(entity.getDuration());
-//        return dto;
     }
 
     public WorkRecord toEntity(WorkRecordDTO dto) {
         WorkRecord entity = modelMapper.map(dto, WorkRecord.class);
-//        entity.setDuration(dto.getDuration());
         return entity;
     }
 
