@@ -1,12 +1,3 @@
-CREATE TABLE IF NOT EXISTS public.auth_credentials (
-		id BIGSERIAL PRIMARY KEY,
-		employee_id BIGINT NOT NULL,
-		email VARCHAR(200) NOT NULL UNIQUE,
-		password VARCHAR(200),
-		role VARCHAR(50),
-		CONSTRAINT fk_employee_auth FOREIGN KEY(employee_id) REFERENCES public.employee(id) ON DELETE CASCADE
-);
-
 INSERT INTO public.auth_credentials (id, employee_id, email, password, role)
 SELECT 
     1,
