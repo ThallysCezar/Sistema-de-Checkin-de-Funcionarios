@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { AdminRecord } from '../models/admin-record';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,7 @@ import { AdminRecord } from '../models/admin-record';
 export class AdminService {
   constructor(private httpClient: HttpClient) {}
 
-  private readonly apiUrl = 'http://localhost:8080/work';
+  private readonly apiUrl = `${environment.apiUrl}/work`;
 
   listAll(): Observable<AdminRecord[]> {
     return this.httpClient.get<any[]>(this.apiUrl).pipe(

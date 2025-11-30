@@ -33,9 +33,7 @@ export class Login {
 
     this.authService.login(username, password).subscribe({
       next: (res: LoginResponse) => {
-        // Backend returns employee details; store minimal session info if needed
         localStorage.setItem('username', res.email || username || '');
-        // AuthService already stored the employee and role in localStorage; also set a convenience item
         localStorage.setItem('employee', JSON.stringify({ id: res.id, name: res.name, email: res.email }));
         if (res.role && res.role.toLowerCase() === 'manager') {
           this.router.navigate(['/admins']);
@@ -57,7 +55,6 @@ export class Login {
     });
   }
 
-  // getters for template convenience
   get username() { return this.loginForm.get('username'); }
   get password() { return this.loginForm.get('password'); }
 }

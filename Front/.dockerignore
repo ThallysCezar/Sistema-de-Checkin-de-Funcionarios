@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.angular/
+.vscode/
+*.log
+.env
+.env.local
+.git/
+.gitignore
+README.md
+*.md
+coverage/
+.nyc_output/
+e2e/

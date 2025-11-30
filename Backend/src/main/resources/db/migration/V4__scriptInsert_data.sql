@@ -1,9 +1,7 @@
 ---- Insert employees
 INSERT INTO public.employee (id, name, email) VALUES
--- Note: role column was added by V6 migration. Existing rows will be updated there instead.
-(1, 'Admin', 'admin@example.com'),
-(2, 'Manager', 'manager@example.com'),
-(3, 'Employee', 'employee@example.com');
+(1, 'Manager', 'manager@example.com'),
+(2, 'Employee', 'employee@example.com');
 
 
 ---- Insert work records (one closed record and one open)

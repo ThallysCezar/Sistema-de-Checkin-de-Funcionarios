@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class AuthCredential {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "employee_id")

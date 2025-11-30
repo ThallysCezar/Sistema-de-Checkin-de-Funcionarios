@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 export interface EmployeeDTO {
   id: number;
@@ -19,7 +20,7 @@ export interface LoginResponse {
   providedIn: 'root',
 })
 export class LoginService {
-  private readonly apiUrl = 'http://localhost:8080/auth/login';
+  private readonly apiUrl = `${environment.apiUrl}/auth/login`;
 
   constructor(private http: HttpClient) {}
 
