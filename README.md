@@ -1,4 +1,4 @@
-# ⏱️ Sistema de Controle de Ponto - Grupo Moura
+# ⏱️ Sistema de Check-in - Grupo Moura
 
 <div align="center">
 
@@ -10,7 +10,7 @@
 ![Docker](https://img.shields.io/badge/Docker-Enabled-2496ED?logo=docker)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript)
 
-**Sistema completo de registro de ponto eletrônico com arquitetura moderna e deploy em produção**
+**Sistema completo de check-in de funcionários com arquitetura moderna e deploy em produção**
 
 [🌐 Demo Online](#-demo-online) •
 [🛠️ Tecnologias](#-stack-tecnológico) •
@@ -29,6 +29,7 @@
 ### 🔗 Links da Aplicação
 
 - **Backend API:** https://sistema-de-checkin-de-funcionarios.onrender.com
+- **Swagger API Docs:** https://sistema-de-checkin-de-funcionarios.onrender.com/swagger-ui.html
 - **API Health Check:** https://sistema-de-checkin-de-funcionarios.onrender.com/actuator/health
 - **Frontend:** (Em deploy)
 
@@ -43,12 +44,12 @@
 
 ## 📖 Sobre o Projeto
 
-Sistema completo de **Controle de Ponto Eletrônico** desenvolvido para o **Grupo Moura**, permitindo registro de entrada/saída de funcionários com dashboard administrativo para gestores.
+Sistema completo de **Check-in de Funcionários** desenvolvido para o **Grupo Moura**, permitindo registro de entrada/saída de funcionários com dashboard administrativo para gestores.
 
 ### 🎯 Objetivos Alcançados
 
 ✅ **Autenticação robusta** com controle de acesso por roles  
-✅ **Registro de ponto** com check-in/check-out e cálculo automático  
+✅ **Sistema de check-in/check-out** com cálculo automático de horas  
 ✅ **Dashboard administrativo** para visualização de registros  
 ✅ **Arquitetura moderna** com mensageria assíncrona (RabbitMQ)  
 ✅ **Containerização completa** com Docker e Docker Compose  
@@ -72,6 +73,7 @@ Sistema completo de **Controle de Ponto Eletrônico** desenvolvido para o **Grup
 | **Flyway** | - | Versionamento e migrations de BD |
 | **RabbitMQ** | 3 | Message broker para eventos assíncronos |
 | **Lombok** | - | Redução de boilerplate code |
+| **Swagger/OpenAPI** | 3.0 | Documentação interativa da API |
 | **Maven** | 3.9+ | Gerenciamento de dependências e build |
 
 ### Frontend
@@ -107,6 +109,99 @@ Sistema completo de **Controle de Ponto Eletrônico** desenvolvido para o **Grup
 | **Service Layer** | Lógica de negócio isolada |
 | **Multi-stage Docker Build** | Otimização de imagens |
 | **Environment-based Config** | Suporte dev/prod |
+
+---
+
+## 🎬 Como Funciona
+
+O sistema possui fluxos diferenciados baseados no perfil do usuário (Manager ou Employee). Veja abaixo como cada funcionalidade opera:
+
+### 1️⃣ Tela de Login
+
+Todos os usuários iniciam pela tela de login, onde devem inserir suas credenciais (email e senha).
+
+<div align="center">
+
+![Tela de Login](./Assets\imagens\login.jpeg)
+*Figura 1: Tela de Login*
+
+</div>
+
+**Fluxo:**
+- Usuário insere email e senha
+- Sistema valida credenciais no backend
+- Redireciona conforme o perfil (Manager → Dashboard | Employee → Check-in)
+
+---
+
+### 2️⃣ Fluxo do Manager (Gestor)
+
+Após o login, gestores são redirecionados automaticamente para o **Dashboard Administrativo**, onde podem visualizar todos os registros de ponto da equipe.
+
+<div align="center">
+
+![Dashboard Administrativo](./Assets\imagens\dashboard_admin.jpeg)
+*Figura 2: Dashboard Administrativo - Visualização de todos os registros*
+
+</div>
+
+**Funcionalidades disponíveis:**
+- ✅ Visualizar lista completa de check-ins/check-outs da equipe
+- ✅ Ver detalhes: Nome, horário de entrada, saída e duração trabalhada
+- ✅ Acessar página de check-in através do botão "Fazer Check-in"
+
+---
+
+### 3️⃣ Fluxo do Employee (Funcionário)
+
+Funcionários são redirecionados diretamente para a **Tela de Check-in**, onde podem registrar entrada e saída.
+
+<div align="center">
+
+![Tela de Check-in](./Assets\imagens\checkin.jpeg)
+*Figura 3: Tela de Check-in com botões de entrada e saída*
+
+</div>
+
+#### 📥 Botão Check-in (Entrada)
+
+<div align="center">
+
+![Check-in Realizado](./Assets\imagens\manager_checkin.jpeg)
+*Figura 4: Confirmação de check-in realizado com sucesso*
+
+</div>
+
+**Funcionamento:**
+- Usuário clica em **"Check-in"** para registrar entrada
+- Sistema valida se já existe check-in ativo (sem check-out)
+- ✅ **Sucesso**: Registra horário de entrada e exibe mensagem de confirmação
+- ❌ **Validação**: Se tentar fazer check-in duplicado, exibe mensagem de erro:
+  > *"Você já possui um check-in ativo. Faça o check-out antes de registrar nova entrada."*
+
+<div align="center">
+
+![Erro Check-in Duplicado](./Assets\imagens\not_checkinDuplicate.jpeg)
+*Figura 5: Validação impedindo check-in duplicado*
+
+</div>
+
+---
+
+#### 📤 Botão Check-out (Saída)
+
+<div align="center">
+
+![Check-out com Duração](./Assets\imagens\not_checkoutSucesso.jpeg)
+*Figura 6: Check-out realizado exibindo duração total trabalhada*
+
+</div>
+
+**Funcionamento:**
+- Usuário clica em **"Check-out"** para registrar saída
+- Sistema calcula automaticamente a duração trabalhada (formato HH:mm:ss)
+- Exibe mensagem de sucesso com o tempo total:
+  > *"Check-out realizado! Duração trabalhada: 08:30:45"*
 
 ---
 
