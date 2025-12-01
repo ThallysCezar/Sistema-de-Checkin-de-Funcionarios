@@ -122,7 +122,7 @@ Todos os usuários iniciam pela tela de login, onde devem inserir suas credencia
 
 <div align="center">
 
-![Tela de Login](./Assets\imagens\login.jpeg)
+![Tela de Login](https://github.com/ThallysCezar/Sistema-de-Checkin-de-Funcionarios/blob/main/Assets/imagens/login.jpeg)
 *Figura 1: Tela de Login*
 
 </div>
@@ -140,7 +140,7 @@ Após o login, gestores são redirecionados automaticamente para o **Dashboard A
 
 <div align="center">
 
-![Dashboard Administrativo](./Assets\imagens\dashboard_admin.jpeg)
+![Dashboard Administrativo](https://github.com/ThallysCezar/Sistema-de-Checkin-de-Funcionarios/blob/main/Assets/imagens/dashboard_admin.jpeg)
 *Figura 2: Dashboard Administrativo - Visualização de todos os registros*
 
 </div>
@@ -158,7 +158,7 @@ Funcionários são redirecionados diretamente para a **Tela de Check-in**, onde 
 
 <div align="center">
 
-![Tela de Check-in](./Assets\imagens\checkin.jpeg)
+![Tela de Check-in](https://github.com/ThallysCezar/Sistema-de-Checkin-de-Funcionarios/blob/main/Assets/imagens/checkin.jpeg)
 *Figura 3: Tela de Check-in com botões de entrada e saída*
 
 </div>
@@ -167,7 +167,7 @@ Funcionários são redirecionados diretamente para a **Tela de Check-in**, onde 
 
 <div align="center">
 
-![Check-in Realizado](./Assets\imagens\manager_checkin.jpeg)
+![Check-in Realizado](https://github.com/ThallysCezar/Sistema-de-Checkin-de-Funcionarios/blob/main/Assets/imagens/manager_checkin.jpeg)
 *Figura 4: Confirmação de check-in realizado com sucesso*
 
 </div>
@@ -181,7 +181,7 @@ Funcionários são redirecionados diretamente para a **Tela de Check-in**, onde 
 
 <div align="center">
 
-![Erro Check-in Duplicado](./Assets\imagens\not_checkinDuplicate.jpeg)
+![Erro Check-in Duplicado](https://github.com/ThallysCezar/Sistema-de-Checkin-de-Funcionarios/blob/main/Assets/imagens/not_checkinDuplicate.jpeg)
 *Figura 5: Validação impedindo check-in duplicado*
 
 </div>
@@ -192,7 +192,7 @@ Funcionários são redirecionados diretamente para a **Tela de Check-in**, onde 
 
 <div align="center">
 
-![Check-out com Duração](./Assets\imagens\not_checkoutSucesso.jpeg)
+![Check-out com Duração](https://github.com/ThallysCezar/Sistema-de-Checkin-de-Funcionarios/blob/main/Assets/imagens/not_checkoutSucesso.jpeg)
 *Figura 6: Check-out realizado exibindo duração total trabalhada*
 
 </div>
